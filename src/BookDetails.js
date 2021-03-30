@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import useFetch from './useFetch';
+import Search from './Search';
+import {Link} from 'react-router-dom';
 
 const BookDetails = () => {
     const {isbn} = useParams();
@@ -10,18 +12,23 @@ const BookDetails = () => {
         <div className='book-details'>
             {isPending && <p>'Book Data is Loading...'</p>}
             {error && <p>'Sorry. Something went wrong.'</p>}
-            <h2>{book ? book.title : 'Loading Book Title'}</h2>
+            <div>
+                <h2>{book ? book.title : 'Loading Book Title'}</h2>
+            </div>
             <div className='book-info'>
-                <p>{`ISBN: ${isbn}`}</p>
-                <p>{`Published: ${book ? book?.publish_date : 'Loading'}`}</p>
-                <p>{`Pages: ${book ? book?.number_of_pages : 'Loading'}`}</p>
-                <p>{`Publishers: ${book ? book?.publishers?.map((publisher, index, publisers) => {
-                    return (publisher.name + (index < publisers.length - 1 ? ', ' : ''));
-                }) : 'Loading'}`}</p>
+                <div className='text'>
+                    <p>{`ISBN: ${isbn}`}</p>
+                    <p>{`Published: ${book ? book?.publish_date : 'Loading'}`}</p>
+                    <p>{`Pages: ${book ? book?.number_of_pages : 'Loading'}`}</p>
+                    <p>{`Publishers: ${book ? book?.publishers?.map((publisher, index, publisers) => {
+                        return (publisher.name + (index < publisers.length - 1 ? ', ' : ''));
+                    }) : 'Loading'}`}</p>
+                </div>
+                <div className='book-cover'>
+                    <img src={book?.cover?.medium} alt={`Cover for: ${book?.title}`}/>
+                </div>
             </div>
-            <div className='bookCover'>
-                <img src={book?.cover?.medium} alt={`Cover for ${book?.title}`}/>
-            </div>
+            <Link to='/'><button>Search Another ISBN</button></Link>
         </div>
     );
 }
