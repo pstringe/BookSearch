@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+
 const Search = () => {
-    const [isbn, setISBN] = useState('');
+    const [isbn, setISBN] = useState();
     console.log(isbn);
 
     return (
