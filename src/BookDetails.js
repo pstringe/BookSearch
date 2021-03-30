@@ -10,16 +10,18 @@ const BookDetails = () => {
         <div className='book-details'>
             {isPending && <p>'Book Data is Loading...'</p>}
             {error && <p>'Sorry. Something went wrong.'</p>}
+            <h2>{book ? book.title : 'Loading Book Title'}</h2>
             <div className='book-info'>
-                <h2>{book ? book.title : 'Loading Book Title'}</h2>
                 <p>{`ISBN: ${isbn}`}</p>
-                <p>{`Published: ${book ? book.publish_date : 'Loading'}`}</p>
-                <p>{`Pages: ${book ? book.number_of_pages : 'Loading'}`}</p>
-                <p>{`Publishers: ${book ? book.publish_places.map((publisher, index, publisers) => {
+                <p>{`Published: ${book ? book?.publish_date : 'Loading'}`}</p>
+                <p>{`Pages: ${book ? book?.number_of_pages : 'Loading'}`}</p>
+                <p>{`Publishers: ${book ? book?.publishers?.map((publisher, index, publisers) => {
                     return (publisher.name + (index < publisers.length - 1 ? ', ' : ''));
                 }) : 'Loading'}`}</p>
             </div>
-            <div className='bookCover'></div>
+            <div className='bookCover'>
+                <img src={book?.cover?.medium} alt={`Cover for ${book?.title}`}/>
+            </div>
         </div>
     );
 }
