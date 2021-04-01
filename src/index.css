@@ -1,5 +1,6 @@
-body {
+body, html, #root, #root> div{
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,10 +8,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;  
+}
+.search > form > {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.search > form > label, button{
+  margin: 8px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .book-details{
   display: flex;
   flex-direction: column;
@@ -21,6 +38,7 @@ code {
   margin: auto;
   padding: 8px;
 }
+
 .book-info {
   display: flex;
   flex-direction: row;

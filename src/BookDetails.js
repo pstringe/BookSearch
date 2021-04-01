@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import useFetch from './useFetch';
-import Search from './Search';
 import {Link} from 'react-router-dom';
 
 const BookDetails = () => {
@@ -28,7 +27,7 @@ const BookDetails = () => {
                     <img src={book?.cover?.medium} alt={`Cover for: ${book?.title}`}/>
                 </div>
             </div>
-            <Link to='/'><button>Search Another ISBN</button></Link>
+            <Link to='/'><button>Search Another Book</button></Link>
         </div>
     );
 }
